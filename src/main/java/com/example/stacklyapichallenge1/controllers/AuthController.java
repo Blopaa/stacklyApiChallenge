@@ -1,5 +1,6 @@
 package com.example.stacklyapichallenge1.controllers;
 
+import com.example.stacklyapichallenge1.dto.EmployeeRequest;
 import com.example.stacklyapichallenge1.entities.Employee;
 import com.example.stacklyapichallenge1.services.AuthServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> SignUp(@RequestBody Employee employee){
         return new ResponseEntity<>( authServices.SignUp(employee), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> SignIn(@RequestBody EmployeeRequest employee){
+        return new ResponseEntity<>(authServices.SignInUser(employee), HttpStatus.FOUND);
     }
 
 }
