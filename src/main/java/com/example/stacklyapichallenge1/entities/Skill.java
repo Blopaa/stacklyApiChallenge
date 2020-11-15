@@ -4,17 +4,23 @@ package com.example.stacklyapichallenge1.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "skill", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"}, name = "UKname")})
-public class Skill {
+public class Skill implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
+    private String name;
     private Date created_at;
+
+    @ManyToMany(mappedBy = "skills")
+    Set<Employee> employees = new HashSet<>();
 
     public int getId() {
         return id;
@@ -25,11 +31,11 @@ public class Skill {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public Date getCreated_at() {
