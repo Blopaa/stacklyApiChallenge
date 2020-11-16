@@ -14,4 +14,8 @@ public class SkillService {
         skillRepository.save(skill);
         return skill;
     }
+
+    public Skill findSkillByName(String name){
+       return skillRepository.findBySkillname(name);
+    }
 }
