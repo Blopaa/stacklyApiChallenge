@@ -11,12 +11,12 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "skill", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"}, name = "UKusername")})
+@Table(name = "skill", uniqueConstraints = {@UniqueConstraint(columnNames = {"skillname"}, name = "UKskillname")})
 public class Skill implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String username;
+    private String skillname;
     private Date created_at;
 
     @ManyToMany(mappedBy = "skills")
@@ -31,12 +31,12 @@ public class Skill implements Serializable {
     }
 
 
-    public String getUsername() {
-        return username;
+    public String getSkillname() {
+        return skillname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setSkillname(String skillname) {
+        this.skillname = skillname;
     }
 
     public Date getCreated_at() {
