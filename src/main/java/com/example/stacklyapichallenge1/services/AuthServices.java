@@ -24,10 +24,10 @@ public class AuthServices {
             } else if (employee.getName() == null) {
                 return "You must write a name";
             }
-            employeeRepository.save(employee);
+            Employee savedUser =  employeeRepository.save(employee);
             Algorithm algorithm = Algorithm.HMAC256("superSecret");
             return JWT.create()
-                    .withClaim("id", employee.getId())
+                    .withClaim("userId", savedUser.getId())
                     .sign(algorithm);
         } catch (JWTCreationException e) {
             return "Invalid Signing configuration / Couldn't convert Claims.";
@@ -50,7 +50,7 @@ public class AuthServices {
 
             Algorithm algorithm = Algorithm.HMAC256("superSecret");
             return JWT.create()
-                    .withClaim("id", foundEmployee.getId())
+                    .withClaim("userId", foundEmployee.getId())
                     .sign(algorithm);
         } catch (JWTCreationException e) {
             return null;
