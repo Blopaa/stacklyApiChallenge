@@ -5,16 +5,14 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JwtVerfyToken {
-    public String verifyToken(String token){
-        try{
+    public int verifyToken(String token){
             Algorithm algorithm = Algorithm.HMAC256("superSecret");
-            JWTVerifier verifier = JWT.require(algorithm).withClaimPresence("id").build();
+            JWTVerifier verifier = JWT.require(algorithm).withClaimPresence("userId").build();
             DecodedJWT jwt = verifier.verify(token);
-            return jwt.getClaim("id").asString();
-        }catch (JWTVerificationException e){
-            return null;
-        }
+            return jwt.getClaim("userId").asInt();
     }
 }
