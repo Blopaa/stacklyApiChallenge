@@ -4,5 +4,5 @@ import com.example.stacklyapichallenge1.entities.Skill;
 import org.springframework.data.repository.CrudRepository;
 
 public interface SkillRepository extends CrudRepository<Skill, Integer> {
-    Skill findByUsername(String username);
+    Skill findBySkillname(String skillname);
 }
