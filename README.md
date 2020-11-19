@@ -7,7 +7,7 @@ DB - postgresql
 
 ## Auth
 
-#### `/api/user/register`
+#### `/api/user/register` - post
 ```json
   {
     "username":"Blopa",
@@ -18,7 +18,7 @@ DB - postgresql
 
 **returns** - JWT token
 
-#### `/api/user/login`
+#### `/api/user/login` - post
 ```json
   {
     "email":"Blopaemail",
@@ -30,7 +30,7 @@ DB - postgresql
 
 ## Skill
 
-#### `/api/skills/register`
+#### `/api/skills/register`- post
 ```json
 {
   "skillname":  "Java",
@@ -40,7 +40,7 @@ DB - postgresql
 
 **returns** - New Skill created
 
-#### `/api/skills/{name}`
+#### `/api/skills/{name}` - get
 ```
 name {String} - Skill name
 ```
@@ -49,7 +49,7 @@ name {String} - Skill name
 
 ## Employee
 
-#### `/api/user/skills/{name}`
+#### `/api/user/skills/{name}` - post
 ```
 HEADER - JWT token provided in register and login
 ```
@@ -60,6 +60,6 @@ name {String} - Skill name
 
 **returns** - String
 
-#### `/api/user/getallusers`
+#### `/api/user/getallusers` - get
 
 **returns** - All Users
