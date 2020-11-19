@@ -59,3 +59,7 @@ name {String} - Skill name
 **aclaration** - use this to add an skill to an employee
 
 **returns** - String
+
+#### `/api/user/getallusers`
+
+**returns** - All Users
