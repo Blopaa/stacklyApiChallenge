@@ -1,5 +1,6 @@
 package com.example.stacklyapichallenge1.controllers;
 
+import com.example.stacklyapichallenge1.entities.Employee;
 import com.example.stacklyapichallenge1.entities.Skill;
 import com.example.stacklyapichallenge1.security.JwtVerfyToken;
 import com.example.stacklyapichallenge1.services.EmployeeService;
@@ -9,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -29,6 +33,11 @@ public class EmployeeController {
 
         return new ResponseEntity<>(employeeService.AddSkillToUser(skillId, employeeId), HttpStatus.OK);
 
+    }
+
+    @GetMapping("/getallusers")
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.ACCEPTED);
     }
 
 }
